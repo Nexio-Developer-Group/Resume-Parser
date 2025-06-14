@@ -3,9 +3,12 @@ from collections import Counter
 import re
 import time
 from datetime import datetime
+import os
 
 # Load spaCy's English model
 nlp = spacy.load("en_core_web_sm")
+
+SKILLS_FILE = os.path.join(os.path.dirname(__file__), "skills.txt")
 
 class ResumeStructurer:
     def __init__(self, segmented_dict):
@@ -45,12 +48,21 @@ class ResumeStructurer:
             return result
         return None
 
+    def extract_skills(self):
+        skills_section = self.sections.get("skills")
+        if skills_section and skills_section.get("content"):
+            result = extract_skills_from_text(skills_section["content"])
+            self.structured["skills"] = result
+            return result
+        return None
+
     def get_structured_resume(self):
         # Only extract if section exists
         self.extract_about_me()
         self.extract_most_recent_education()
         self.extract_most_recent_experience()
         self.extract_projects()
+        self.extract_skills()
         return self.structured
 
 def extract_relevant_lines_and_link(text: str):
@@ -424,7 +436,7 @@ def extract_top_2_projects(text):
             # Sort links by preference
             https_links = [link for link in found_links if link.startswith('https://')]
             www_links = [link for link in found_links if link.startswith('www.')]
-            other_links = [link for link in found_links if not link.startswith(('https://', 'www.'))]
+            other_links = [link for link in found_links if not link.startswith(('https://', 'www'))]
             
             if https_links:
                 best_link = https_links[0]
@@ -792,3 +804,39 @@ def extract_most_recent_education(text):
     print(f"\nEducation extraction completed in {end_time - start_time:.4f} seconds")
     
     return result
+
+def extract_skills_from_text(text):
+    """
+    Extracts skills from the given text by matching against the skills.txt file.
+    Args:
+        text (str): Raw text from the skills section
+    Returns:
+        list: List of matched skills (case-insensitive, deduplicated, sorted by appearance)
+    """
+    # Read and parse skills.txt
+    try:
+        with open(SKILLS_FILE, encoding="utf-8") as f:
+            skills_list = [s.strip() for s in f.read().split(",") if s.strip()]
+    except Exception as e:
+        return []
+
+    # Build a set for fast lookup (lowercase)
+    skills_set = set(s.lower() for s in skills_list)
+    found_skills = []
+    text_lower = text.lower()
+    # Sort skills by length descending to match longer skills first
+    skills_list_sorted = sorted(skills_list, key=lambda x: -len(x))
+    used_spans = []
+    for skill in skills_list_sorted:
+        skill_lower = skill.lower()
+        # Use regex to match whole words/phrases
+        pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
+        for match in re.finditer(pattern, text_lower):
+            span = match.span()
+            # Avoid overlapping matches
+            if any(span[0] < u[1] and span[1] > u[0] for u in used_spans):
+                continue
+            found_skills.append(skill)
+            used_spans.append(span)
+            break  # Only add the first occurrence
+    return found_skills
