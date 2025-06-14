@@ -512,73 +512,47 @@ def extract_about_me(text):
         "am", "work", "specialize", "focus", "enjoy", "love", "like", "pursue",
         "study", "learn", "develop", "create", "build", "design", "manage"
     }
-    
+    import time
     start_time = time.time()
-    
-    # Split text by lines
     lines = [line.strip() for line in text.split('\n') if line.strip()]
-    
     if not lines:
         return {"about_me": ""}
-
-    # Find the first line that contains introduction-style grammar
     intro_start_idx = None
-    
     for idx, line in enumerate(lines):
         doc = nlp(line.lower())
-        
-        # Check if line contains personal introduction patterns
         has_personal_indicator = False
         has_descriptive_content = False
-        
-        # Look for personal indicators
         for token in doc:
             if token.lemma_.lower() in personal_indicators:
                 has_personal_indicator = True
                 break
-        
-        # Look for descriptive content (adjectives, verbs, nouns)
         content_words = 0
         for token in doc:
             if token.pos_ in intro_pos_tags and not token.is_stop:
                 content_words += 1
             if token.lemma_.lower() in intro_verbs:
                 has_descriptive_content = True
-        
-        # Consider it an intro line if it has personal indicators or 
-        # descriptive content with reasonable length
         if (has_personal_indicator or 
             (has_descriptive_content and content_words >= 2 and len(line.split()) >= 4)):
             intro_start_idx = idx
             break
-    
-    # If no clear intro pattern found, check for lines with first-person pronouns
     if intro_start_idx is None:
         for idx, line in enumerate(lines):
             line_lower = line.lower()
             if any(pronoun in line_lower.split() for pronoun in ["i", "my", "me"]):
                 intro_start_idx = idx
                 break
-    
-    # If still no pattern found, start from the first substantial line
     if intro_start_idx is None:
         for idx, line in enumerate(lines):
-            if len(line.split()) >= 5:  # At least 5 words
+            if len(line.split()) >= 5:
                 intro_start_idx = idx
                 break
-    
-    # If nothing found, return the first line
     if intro_start_idx is None:
         intro_start_idx = 0
-    
-    # Extract from the identified start line to the end
-    about_me_content = '\n'.join(lines[intro_start_idx:])
-    
+    about_me_content = ' '.join(lines[intro_start_idx:])  # Remove newlines, join with space
     end_time = time.time()
-    
     print(f"About Me extraction time: {end_time - start_time:.4f} seconds")
     print(f"Started extraction from line {intro_start_idx + 1}")
-    
     return {"about_me": about_me_content}
 
 def extract_most_recent_education(text):
