@@ -25,3 +25,4 @@ def process_input(data: InputData):
         "email": data.email,
         "link": data.link
     }
+
