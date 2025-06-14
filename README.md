@@ -1,44 +1,102 @@
-# Resume-Parser
-A 3rd-Party Python LLM-based API for Resume Parser.
+# Resume Parser API
 
-## Ollama Setup
+This project provides a FastAPI-based API for parsing resumes from PDF files, extracting structured information, and validating user identity. It supports advanced PDF extraction, segmentation, and structuring logic.
 
-To set up Ollama on your system, use the provided `run.sh` script. This script will install Ollama (if not already installed) and start the Ollama service.
+## 1. Clone the Repository
 
-### Steps:
+```bash
+# On your VM, clone the repository
+git clone https://github.com/Nexio-Developer-Group/Resume-Parser.git
+cd Resume-Parser
+```
 
-1. Make the script executable:
-   ```sh
-   chmod +x run.sh
-   ```
-2. Run the setup script:
-   ```sh
-   ./run.sh
-   ```
+## 2. Install Python 3.10.11 on Ubuntu
 
-## Testing the Setup
+```bash
+sudo apt update
+sudo apt install -y wget build-essential libssl-dev zlib1g-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev \
+    xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
-To test the Ollama API integration, use the `test.py` script. It sends a prompt to the Ollama server and prints the response.
+# Download and install Python 3.10.11
+wget https://www.python.org/ftp/python/3.10.11/Python-3.10.11.tgz
+tar -xf Python-3.10.11.tgz
+cd Python-3.10.11
+./configure --enable-optimizations
+make -j $(nproc)
+sudo make altinstall
 
-### Steps:
+# Verify installation
+python3.10 --version
+cd ..
+```
 
-1. Create a Python virtual environment:
-   ```sh
-   python -m venv venv
-   ```
-2. Activate the virtual environment:
-  ```sh
-  source venv/bin/activate
-  ```
-3. Install the required dependencies:
-   ```sh
-   pip install requests
-   ```
-4. Run the test script:
-   ```sh
-   python test.py
-   ```
+## 3. Install Python venv (if not already installed)
+
+```bash
+sudo apt install -y python3.10-venv
+```
+
+## 4. Create and Activate a Virtual Environment
+
+```bash
+# In the root of the repository
+python3.10 -m venv venv
+source venv/bin/activate
+```
+
+## 5. Install Project Dependencies
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+## 6. Set Up Environment Variables
+
+Create a `.env` file in the root directory with your API key:
+
+```
+API_KEY=your_secret_api_key_here
+```
+
+## 8. Run the FastAPI Application
+
+```bash
+# From the root directory, with the venv activated
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+- The API will be available at: http://<your-vm-ip>:8000/
+- The interactive docs will be at: http://<your-vm-ip>:8000/docs
+
+## 9. (Optional) Run the API with PM2 for Production
+
+[PM2](https://pm2.keymetrics.io/) is a process manager for Node.js, but it can also manage Python processes.
+
+### Install PM2 (with Node.js)
+
+```bash
+sudo apt install -y nodejs npm
+sudo npm install -g pm2
+```
+
+### Run Uvicorn with PM2
+
+```bash
+# From the root directory, with the venv activated
+pm2 start venv/bin/uvicorn --name resume-api -- app.main:app --host 0.0.0.0 --port 8000
+
+# To see logs
+pm2 logs resume-api
+
+# To restart/stop
+pm2 restart resume-api
+pm2 stop resume-api
+```
 
 ---
 
-For PDF extraction and resume parsing, see the `Extractor/` directory for more details.
+## License
+
+This project is licensed under the MIT License.

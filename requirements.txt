@@ -9,3 +9,6 @@ pdf2image
 Pillow
 pytesseract
 scikit-learn
+spacy
+python-dotenv
+PyPDF2
