@@ -1,0 +1,48 @@
+{
+  "sections_found": 6,
+  "header_candidates_detected": 6,
+  "sections": {
+    "about": {
+      "header": "ABOUT ME P",
+      "content": "I am a Web Developer and AI/ML enthusiast\nmastering TensorFlow and Scikit-learn while\npursuing my MCA from SPSU, Udaipur. Proficient\nin web development with HTML, CSS, JavaScript,\nReactJS, NodeJS, and SQL/NoSQL databases.\nPublished author on 'Machine Learning for School\nDropout Prediction'. Eager to apply my problem-\nsolving skills in AI/ML to real-world projects.",
+      "start_line": 2,
+      "end_line": 10,
+      "confidence": 1.0
+    },
+    "skills": {
+      "header": "SKILLS & PROFICIENCIES",
+      "content": "HTLM5\nCSS3\nWeb Bootstrap 5\nTechnologies JavaScript\nReactJS\nNodeJS\nProgramming\nPython\nLanguages E\nMySQL\nDatabases MongoDB\nFirebase\nTensorFlow\nAI/ML Scikit-Learn\nTechnologies OpenCV\nRapid Miner\nGitHub\nOther\nHosting\nACTIVITY & HOBBIES\nIoT Club Member S\nBlender 3D\nFigma\nNCC Cadet\nJAIN namanjain2002qw@gmail.com\nlinkedin.com/in/nasu1708\nMobile :- +91 8905924424\nUdaipur, Rajasthan, India.",
+      "start_line": 11,
+      "end_line": 39,
+      "confidence": 1.0
+    },
+    "experience": {
+      "header": "PROFESSIONAL EXPERIENCE",
+      "content": "Web Developer | University Sports ERP\nSir Padampat Singhania University 2024\nLed a team of 4 to develop and deploy a full-featured Sports ERP\nsystem for the university, handling both front-end and back-end\ndevelopment. Improved sports equipment management and\nstreamlined department operations.\nAI/ML Intern\nCode Clause 2024\nIt has been an incredible journey of learning and growth. During\nthis internship, I had the opportunity to work on various challenging\nAI projects.\nWeb Developer Intern\nCode Clause 2023\nA Fun and Educational Journey in HTML, Firebase, CSS, Bootstrap,\nand JavaScript. During my work, I enjoyed learning and expanding\nmy skills in these technologies.",
+      "start_line": 40,
+      "end_line": 56,
+      "confidence": 1.0
+    },
+    "education": {
+      "header": "EDUCATIONAL BACKGROUND",
+      "content": "Masters of Computer Application\nSir Padampat Singhania University, Udaipur. May 2025\nCGPA - 8.945\nBachelors of Computer Application\nMohanlal Sukhadia University, Udaipur. Jun 2023\nCGPA - 8.34 (First Rank)\nHigher Secondary (HSC) - Sci (Math's)\nGujarat Board - GSHSEB Mar 2020\nPercentage - 62.76%\nSecondary Education (SSC)\nGujarat Board - GSHSEB Mar 2018\nPercentage - 67.83%\nSOFT SKILLS\nTime Management Leadership\nKnowledge Sharing Adaptability",
+      "start_line": 57,
+      "end_line": 73,
+      "confidence": 1.0
+    },
+    "certifications": {
+      "header": "CERTIFICATION",
+      "content": "On Going\nFlutter & Dart Crash Course\nUdemy Edu\nOct 2024\nText Classification in NLP\nGreat Learning\nIntroduction to Data Analytics Mar 2024\non Google Cloud Google Career\nObject-Oriented Programming Feb 2024\nin Python Great Learning\nOct 2023\nCSS Basics\nHackerRank\nAug 2023\nNoSQL - MongoDB Basics\nGreat Learning\nAWARDS & HONORS\nExcellence in BCA Award Aug 2023\nBy Pacific University\nTehsil-Level BCA First Rank Jan 2024\nBy Jhadol MLA\n3rd Place in IRC 2024 Best Mar 2024\nPoster Presentation\nBy SPSU, Udaipur.\nPUBLICATION\nThe Essence ( lSSN 2249-0132)  Mar 6, 2024\nDecoding School Dropout Rate Factors\nUsing Machine Learning Model\nThe Essence ( lSSN 2249-0132)  Mar 6, 2024\nDeficiency of AI in Mathematics\nCO-CURRICULAR\nINTERNATIONAL RESEARCH Mar 2024\nCONVENTION 2024 - SPSU\nStudent coordinator\nFACULTY DEVELOPMENT Mar 2024\nPROGRAM 2024 - SPSU\nStudent coordinator\nSPSU - PANACHE 2024 Feb 2024\nCore Team",
+      "start_line": 74,
+      "end_line": 113,
+      "confidence": 1.0
+    },
+    "projects": {
+      "header": "NOTABLE PROJECTS",
+      "content": "SPSU SPORTS ERP(LIVE PROJECT) 2024\nWe developed a comprehensive Sports ERP system designed to automate\nrequests, efficiently track inventory, and manage overdue items. This\ninnovative solution offers cost-effective services that streamline\noperations, saving valuable time and improving decision-making processes.\nResponsible For:\nLed a team of 4 in workflow management and development.\nHandled front-end development, serverless Firebase functions, API\nintegration, and database design.\nLink: sportserp.spsu.ac.in\nHandFlow Home Automation (TESTED PROJECT) 2023-2024\nImplemented a real-time hand gesture recognition system for home\nautomation, utilizing an ESP32 microcontroller and a custom model\n'HandFlow' based on Google MediaPipe. User control electronic devices\nthrough gestures via a web interface, with signals transmitted to Firebase\nand actions executed by the ESP32.\nResponsible For:\nCo-Led a team of 5 in the development and integration of AI models.\nCollaborated closely with IoT device experts to establish a hardware\ntesting environment.\nDeveloped a website for seamless integration of AI and hardware,\nutilizing Firebase Realtime Database for control and data\nmanagement.\nLink: self-nasu.github.io/HandFlow/\nDropout Rate Factor Identification - 2023\nSmart India Hackathon\nWe proposed a solution that aims to address the critical issue of high\ndropout rates in schools across Gujarat. We have developed an ML-\npowered solution that can predict dropout rates and recommend targeted\ninterventions to reduce dropout rates effectively.\nResponsible For:\nDeveloped the front-end UI/UX, focusing on user-friendly design.\nUtilized modular libraries to create dynamic bar and table charts for\neffective data visualization on the user dashboard.\nContributed as a team member in developing a machine learning-\npowered solution.\nLink: self-nasu.github.io/droprate.github.io/\nOTHER PROJECTS\nAvailable on GitHub\nPersonal Portfolio Website - React js and Node Js\n(Currently Working on)\nEasyAI Python Lib (New Open Source) - available on\npip packages. (Currently Working on)\nJRSC Jhadol Website - Responsive. (Freelance work)\nMusic player with dynamic music uploads and file\nfetching using NodeJS Backend.\nApp Store Clone - Responsive.\nVerdure: Explore Medicinal Plants with Advanced\nSearch, 3D Models using MySQL and NodeJS.\nYoLo Object Detection using OpenCV.",
+      "start_line": 114,
+      "end_line": 164,
+      "confidence": 1.0
+    }
+  }
+}
